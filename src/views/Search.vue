@@ -22,7 +22,7 @@
         }),
         methods: {
             routeToMeal(routeName) {
-                this.$router.push({ path: '/Meal?id='+routeName.replaceAll("\"", "") });
+                this.$router.push({ name: 'MealID', params: { id: routeName.replaceAll("'", "") } })
             }
         },
         mounted() {

@@ -23,12 +23,12 @@
         }),
         methods: {
             routeToMeal(routeName) {
-                this.$router.push({ path: '/Meal?id='+routeName.replaceAll("\"", "") });
+                this.$router.push({ name: 'MealID', params: { id: routeName.replaceAll("'", "") } })
             }
         },
         mounted() {
             this.recipes = [];
-            db.collection('Recipes').orderBy("name", "asc").where("categories", "array-contains", this.$route.query.id).get().then(snapshot => {
+            db.collection('Recipes').orderBy("name", "asc").where("categories", "array-contains", this.$route.params.type).get().then(snapshot => {
                 snapshot.forEach(doc => {
                     let item = doc.data();
                     const listRef = fbstorage.ref('meals/'+item.name+'.jpg');

@@ -18,7 +18,9 @@ Vue.use(Vuex);
 const router = new VueRouter({ routes: [
   { path: '/', component: Home, name: 'Home' },
   { path: '/Category', component: Category, name: 'Category' },
+  { path: '/Category/:type', component: Category, name: 'CategoryType' },
   { path: '/Meal', component: Meal, name: 'Meal' },
+  { path: '/Meal/:id', component: Meal, name: 'MealID' },
   { path: '/Search', component: Search, name: 'Search' },
   { path: '/Search/:id', component: Search, name: 'SearchID' },
   { path: '/AddNew', component: AddNew, name: 'AddNew' },

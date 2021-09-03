@@ -36,13 +36,11 @@
         image: '',
         instructionCount: 0,
         readRecipeButton: 'Read Recipe',
-        shoppingCart: 'Add to Shopping Cart',
-        utterVoice: ''
+        shoppingCart: 'Add to Shopping Cart'
     }),
     methods: {
         readRecipe() {
             let utter = new SpeechSynthesisUtterance();
-            utter.voice = this.utterVoice;
             utter.text = this.recipe.steps[this.recipe.stepsOrder[this.instructionCount]];
             window.speechSynthesis.speak(utter);
             if (this.instructionCount < this.recipe.stepsOrder.length -1) {
@@ -55,17 +53,18 @@
         },
         addToShoppingCart() {
             if (this.shoppingCart == "Add to Shopping Cart"){ 
-                this.$store.commit('addToShopping', this.$route.query.id);
+                this.$store.commit('addToShopping', this.$route.params.id);
                 this.shoppingCart = "Remove from Shopping Cart";
             } else {
-                this.$store.commit('removeFromShopping', this.$route.query.id);
+                this.$store.commit('removeFromShopping', this.$route.params.id);
                 this.shoppingCart = "Add to Shopping Cart";
             }
         }
     },
     mounted() {
-        db.collection('Recipes').where("name", "==", this.$route.query.id).get().then(snapshot => {
+        db.collection('Recipes').where("name", "==", this.$route.params.id).get().then(snapshot => {
             snapshot.forEach(doc => {
+                console.log(doc);
                 let item = doc.data()
                 item.id = doc.id
                 this.recipe = item;
@@ -73,11 +72,9 @@
                 listRef.getDownloadURL().then((url) => { this.image = url; });
             });
         });
-        if (this.$store.state.shoppingList.includes(this.$route.query.id)) {
+        if (this.$store.state.shoppingList.includes(this.$route.params.id)) {
             this.shoppingCart = "Remove from Shopping Cart";
         }
-        var voices = window.speechSynthesis.getVoices();
-        this.utterVoice = voices[1];
     }
 }
 </script>

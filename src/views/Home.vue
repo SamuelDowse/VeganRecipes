@@ -28,7 +28,7 @@
     }),
     methods: {
       routeToCategory(routeName) {
-        this.$router.push({ path: '/Category?id='+routeName.replaceAll("'", "")} );
+        this.$router.push({ name: 'CategoryType', params: { type: routeName.replaceAll("'", "") } })
       }
     },
     mounted() {
