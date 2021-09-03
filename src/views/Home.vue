@@ -7,9 +7,9 @@
         </h1>
       </v-col>
       <v-col class="mb-4" md="2" v-for="category in categories" :key="category.name">
-        <v-card style="cursor:pointer" @click="routeToCategory(category.name)" v-if="category.name">
-          <v-img :src="category.image" class="white--text align-end" gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)" height="400px">
-            <v-card-title v-text="category.name"></v-card-title>
+        <v-card style="cursor:pointer" :to="'/Category/' + category.name" v-if="category.name">
+          <v-img :src="category.image" :to="'/Category/' + category.name" class="white--text align-end" gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)" height="400px">
+            <v-card-title v-text="category.name" :to="'/Category/' + category.name"></v-card-title>
           </v-img>
         </v-card>
       </v-col>

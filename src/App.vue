@@ -109,7 +109,8 @@
         </v-btn>
       </v-col>
       <v-col class="text-center" md="10" style="font-size: 12px;">
-        <strong>Created by Samuel Dowse</strong><br>For Holly and Bryony, my inspirations
+        <strong>Created by Samuel Dowse</strong><br>For Holly and Bryony, my inspirations<br>
+        Build Version 1.0.0
       </v-col>
       <v-col md="1">
         <form action="https://www.paypal.com/donate" method="post" target="_top">
