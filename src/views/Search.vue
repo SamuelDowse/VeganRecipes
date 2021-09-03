@@ -41,6 +41,7 @@
                     }
                 });
             });
+            
         },
         beforeRouteUpdate(to) {
             this.recipes = [];

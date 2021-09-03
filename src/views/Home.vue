@@ -6,10 +6,9 @@
           What are you in the mood for?
         </h1>
       </v-col>
-
       <v-col class="mb-4" md="2" v-for="category in categories" :key="category.name">
         <v-card style="cursor:pointer" @click="routeToCategory(category.name)" v-if="category.name">
-          <v-img lazy-src="../assets/loading.gif" :src="category.image" class="white--text align-end" gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)" height="400px">
+          <v-img :src="category.image" class="white--text align-end" gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)" height="400px">
             <v-card-title v-text="category.name"></v-card-title>
           </v-img>
         </v-card>
@@ -24,26 +23,40 @@
     name: 'HelloWorld',
 
     data: () => ({
-      categories: []
+      tempCategories: []
     }),
     methods: {
       routeToCategory(routeName) {
         this.$router.push({ name: 'CategoryType', params: { type: routeName.replaceAll("'", "") } })
+      },
+      obtainCategories() {
+        db.collection('Categories').orderBy("name", "asc").get().then(snapshot => {
+          snapshot.forEach((doc) => {
+            let item = doc.data();
+            this.tempCategories.push({
+                name: item.name,
+                image: ''
+            });
+            const listRef = fbstorage.ref('categories/'+item.name+'.jpg');
+            listRef.getDownloadURL().then((url) => {
+              this.tempCategories.forEach(element => {
+                if (element.name == item.name) {
+                  element.image = url;
+                }
+              });
+            });
+          });
+          this.tempCategories.sort(function(a, b){return a.name - b.name});
+        });
+      }
+    },
+    computed: {
+      categories() {
+        return this.tempCategories;
       }
     },
     mounted() {
-      db.collection('Categories').orderBy("name", "asc").get().then(snapshot => {
-        snapshot.forEach(doc => {
-          let item = doc.data();
-          const listRef = fbstorage.ref('categories/'+item.name+'.jpg');
-          listRef.getDownloadURL().then((url) => {
-            this.categories.push({
-              name: item.name,
-              image: url
-            });
-          });
-        });
-      });
+      this.obtainCategories();
     }
   }
 </script>

@@ -64,7 +64,6 @@
     mounted() {
         db.collection('Recipes').where("name", "==", this.$route.params.id).get().then(snapshot => {
             snapshot.forEach(doc => {
-                console.log(doc);
                 let item = doc.data()
                 item.id = doc.id
                 this.recipe = item;

@@ -19,8 +19,13 @@
         name: 'HelloWorld',
 
         data: () => ({
-            recipes: [],
+            tempRecipes: [],
         }),
+        computed: {
+            recipes() {
+                return this.tempRecipes;
+            }
+        },
         methods: {
             routeToMeal(routeName) {
                 this.$router.push({ name: 'MealID', params: { id: routeName.replaceAll("'", "") } })
@@ -31,11 +36,16 @@
             db.collection('Recipes').orderBy("name", "asc").where("categories", "array-contains", this.$route.params.type).get().then(snapshot => {
                 snapshot.forEach(doc => {
                     let item = doc.data();
+                    this.tempRecipes.push({
+                        name: item.name,
+                        image: ''
+                    });
                     const listRef = fbstorage.ref('meals/'+item.name+'.jpg');
                     listRef.getDownloadURL().then((url) => {
-                        this.recipes.push({
-                            name: item.name,
-                            image: url
+                        this.tempRecipes.forEach(element => {
+                            if (element.name == item.name) {
+                            element.image = url;
+                            }
                         });
                     });
                 });

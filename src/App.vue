@@ -147,7 +147,8 @@
     }),
     methods: {
       searchRecipes() {
-        this.$router.push({ path: '/Search/'+this.search });
+        this.$router.push({ name: 'SearchID', params: { id: this.search } });
+        this.search = '';
       },
       displayProfileMenu() {
         this.userAccount = !this.userAccount;
