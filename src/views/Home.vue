@@ -26,9 +26,6 @@
       tempCategories: []
     }),
     methods: {
-      routeToCategory(routeName) {
-        this.$router.push({ name: 'CategoryType', params: { type: routeName.replaceAll("'", "") } })
-      },
       obtainCategories() {
         db.collection('Categories').orderBy("name", "asc").get().then(snapshot => {
           snapshot.forEach((doc) => {

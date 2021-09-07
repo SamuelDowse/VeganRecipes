@@ -2,8 +2,8 @@
     <v-container>
         <v-row class="text-center" style="margin-top: 30px;">
             <v-col md="2" v-for="recipe in recipes" :key="recipe.name">
-                <v-card style="cursor:pointer" @click="routeToMeal(recipe.name)" v-if="recipe.name">
-                    <v-img :src="recipe.image" class="white--text align-end" gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)" height="400px" >
+                <v-card style="cursor:pointer" :to="'/Meal/' + recipe.name" v-if="recipe.name">
+                    <v-img :src="recipe.image" class="white--text align-end" gradien t="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)" height="400px" >
                         <v-card-title v-text="recipe.name"></v-card-title>
                     </v-img>
                 </v-card>
@@ -20,11 +20,7 @@
         data: () => ({
             recipes: []
         }),
-        methods: {
-            routeToMeal(routeName) {
-                this.$router.push({ name: 'MealID', params: { id: routeName.replaceAll("'", "") } })
-            }
-        },
+        methods: { },
         mounted() {
             this.recipes = [];
             db.collection('Recipes').orderBy("name", "desc").get().then(snapshot => {

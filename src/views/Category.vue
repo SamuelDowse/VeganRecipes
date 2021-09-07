@@ -26,11 +26,7 @@
                 return this.tempRecipes;
             }
         },
-        methods: {
-            routeToMeal(routeName) {
-                this.$router.push({ name: 'MealID', params: { id: routeName.replaceAll("'", "") } })
-            }
-        },
+        methods: { },
         mounted() {
             this.recipes = [];
             db.collection('Recipes').orderBy("name", "asc").where("categories", "array-contains", this.$route.params.type).get().then(snapshot => {

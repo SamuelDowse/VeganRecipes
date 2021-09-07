@@ -103,16 +103,16 @@
     </v-main>
 
     <v-footer padless>
-      <v-col md="1">
+      <v-col md="2">
         <v-btn @click="displayProfileMenu">
           <v-icon>mdi-account</v-icon>
         </v-btn>
       </v-col>
-      <v-col class="text-center" md="10" style="font-size: 12px;">
+      <v-col class="text-center" md="8" style="font-size: 12px;">
         <strong>Created by Samuel Dowse</strong><br>For Holly and Bryony, my inspirations<br>
-        Build Version 1.0.0
+        Build Version 1.0.1
       </v-col>
-      <v-col md="1">
+      <v-col md="2" style="text-align:right;">
         <form action="https://www.paypal.com/donate" method="post" target="_top">
           <input type="hidden" name="hosted_button_id" value="NTPB5FKULLQ7W" />
           <input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
