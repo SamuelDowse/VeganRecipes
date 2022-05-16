@@ -30,9 +30,13 @@ Vue.config.productionTip = false;
 
 const store = new Vuex.Store({
     state: {
-        shoppingList: []
+        shoppingList: [],
+        search: ''
     },
     mutations: {
+        setSearch(state, item) {
+          state.search = item;
+        },
         addToShopping(state, item) {
           if (!state.shoppingList.includes(item)){
             state.shoppingList.push(item);
