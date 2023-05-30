@@ -1,86 +1,59 @@
 <template>
-  <v-row class="text-center mx-6">
-    <v-col class="mb-4" cols="12">
-      <h1 class="subheading font-weight-regular">
-        What are you in the mood for?
-      </h1>
+  <v-row>
+    <v-col cols="12" class="text-center">
+      <h1 style="font-family: EB Garamond,serif;font-size:50px">What are you in the mood for?</h1>
     </v-col>
-    <v-col
-      class="mb-4"
-      md="2"
-      v-for="category in categories"
-      :key="category.name"
-    >
-      <v-card
-        style="cursor:pointer"
-        :to="'/Category/' + category.name"
-        v-if="category.name"
-      >
+  </v-row>
+  <v-row>
+    <v-col lg="2" md="4" sm="6" cols="12" v-for="category in sortedCategories" :key="category.name">
+      <v-card style="cursor:pointer" :to="'/Category/' + category.name" v-if="category.name">
         <v-img
-          :src="category.image"
-          :to="'/Category/' + category.name"
+          :src="`https://firebasestorage.googleapis.com/v0/b/veganrecipes-11631.appspot.com/o/categories%2F${category.name}.jpg?alt=media`"
+          height="300px"
           class="white--text align-end"
           gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-          height="400px"
-        >
-          <v-card-title
-            v-text="category.name"
-            :to="'/Category/' + category.name"
-          ></v-card-title>
-        </v-img>
+          cover
+        ></v-img>
+        <v-card-title>
+          {{ category.name }}
+        </v-card-title>
       </v-card>
     </v-col>
   </v-row>
 </template>
 
 <script>
-import { db, fbstorage } from "../firebaseDatabase";
-export default {
-  name: "HelloWorld",
+  import { useFirestore } from 'vuefire';
+  import { useCollection } from 'vuefire';
+  import { collection } from 'firebase/firestore';
 
-  data: () => ({
-    tempCategories: [],
-  }),
-  methods: {
-    obtainCategories() {
-      db.collection("Categories")
-        .orderBy("name", "asc")
-        .get()
-        .then((snapshot) => {
-          snapshot.forEach((doc) => {
-            let item = doc.data();
-            this.tempCategories.push({
-              name: item.name,
-              image: "",
-            });
-            const listRef = fbstorage.ref("categories/" + item.name + ".jpg");
-            listRef.getDownloadURL().then((url) => {
-              this.tempCategories.forEach((element) => {
-                if (element.name == item.name) {
-                  element.image = url;
-                }
-              });
-            });
-          });
-          this.tempCategories.sort(function(a, b) {
-            return a.name - b.name;
-          });
+  export default {
+    data: () => ({
+      categories: []
+    }),
+    methods: {
+      getCategories() {
+        const db = useFirestore();
+        const Categories = useCollection(collection(db, 'Categories'));
+        this.categories = Categories;
+      }
+    },
+    computed: {
+      sortedCategories() {
+        var categories = this.categories;
+        return categories.sort((a, b) => {
+          if (a.name < b.name ){
+            return -1;
+          }
+          if ( a.name > b.name ){
+            return 1;
+          }
+          return 0;
         });
+      }
     },
-  },
-  computed: {
-    categories() {
-      return this.tempCategories;
-    },
-  },
-  mounted() {
-    this.obtainCategories();
-  },
-};
+    mounted() {
+      this.getCategories();
+    }
+  }
 </script>
-
-<style lang="scss">
-h1 {
-  font-family: "EB Garamond", serif;
-}
-</style>

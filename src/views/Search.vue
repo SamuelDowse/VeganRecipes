@@ -1,69 +1,72 @@
 <template>
-  <v-row class="text-center mx-6" style="margin-top: 30px;">
-    <v-col md="2" v-for="recipe in recipes" :key="recipe.name">
-      <v-card
-        style="cursor:pointer"
-        :to="'/Meal/' + recipe.name"
-        v-if="recipe.name"
-      >
+  <v-row>
+    <v-col cols="12" class="text-center">
+      <h1 style="font-family: EB Garamond,serif;font-size:50px">Search Results</h1>
+    </v-col>
+  </v-row>
+  <v-row>
+    <v-col lg="2" md="4" sm="6" cols="12" v-for="recipe in sortedRecipes" :key="recipe.name">
+      <v-card style="cursor:pointer" :to="'/Recipe/' + recipe.name" v-if="recipe.name">
         <v-img
-          :src="recipe.image"
+          :src="`https://firebasestorage.googleapis.com/v0/b/veganrecipes-11631.appspot.com/o/meals%2F${recipe.name}.jpg?alt=media`"
+          height="300px"
           class="white--text align-end"
-          gradien
-          t="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-          height="400px"
-        >
-          <v-card-title v-text="recipe.name"></v-card-title>
-        </v-img>
+          gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+          cover
+        ></v-img>
+        <v-card-title>
+          {{ recipe.name }}
+        </v-card-title>
       </v-card>
     </v-col>
   </v-row>
 </template>
 
 <script>
-import { mapState } from "vuex";
-import { db, fbstorage } from "../firebaseDatabase";
-export default {
-  name: "HelloWorld",
+  import { useFirestore } from 'vuefire';
+  import { useCollection } from 'vuefire';
+  import { collection } from 'firebase/firestore';
 
-  data: () => ({
-    recipes: [],
-  }),
-  methods: {
-    doSearch() {
-      this.recipes = [];
-      db.collection("Recipes")
-        .orderBy("name", "desc")
-        .get()
-        .then((snapshot) => {
-          snapshot.forEach((doc) => {
-            let item = doc.data();
-            if (
-              new RegExp(this.search, "i").test(item.name) ||
-              new RegExp(this.search, "i").test(item.categories)
-            ) {
-              const listRef = fbstorage.ref("meals/" + item.name + ".jpg");
-              listRef.getDownloadURL().then((url) => {
-                this.recipes.push({
-                  name: item.name,
-                  image: url,
-                });
-              });
-            }
-          });
+  export default {
+    data: () => ({
+      recipes: []
+    }),
+    methods: {
+      getRecipes() {
+        const db = useFirestore();
+        const Recipes = useCollection(collection(db, 'Recipes'));
+
+        console.log(Recipes);
+
+        this.recipes = Recipes;
+      }
+    },
+    computed: {
+      sortedRecipes() {
+        var recipes = this.recipes.filter((recipe) => { return recipe.name.toLowerCase().includes(this.testing.toLowerCase())});
+        return recipes.sort((a, b) => {
+          if (a.name < b.name ){
+            return -1;
+          }
+          if ( a.name > b.name ){
+            return 1;
+          }
+          return 0;
         });
+      },
+      testing() {
+        return this.$route.params.name;
+      }
     },
-  },
-  watch: {
-    search() {
-      this.doSearch();
+    watch: {
+      testing: {
+        handler() {
+          this.getRecipes();
+        },immediate: true
+      }
     },
-  },
-  computed: {
-    ...mapState(["search"]),
-  },
-  mounted() {
-    this.doSearch();
-  },
-};
+    mounted() {
+      this.getRecipes();
+    }
+  }
 </script>
