@@ -144,3 +144,35 @@
     at processTimers (node:internal/timers:502:7)
 [error] 
 [error] Error: An unexpected error has occurred.
+[debug] [2023-05-30T15:49:33.892Z] ----------------------------------------------------------------------
+[debug] [2023-05-30T15:49:33.893Z] Command:       /Users/dowses/.nvm/versions/node/v16.19.0/bin/node /Users/dowses/.nvm/versions/node/v16.19.0/bin/firebase deploy
+[debug] [2023-05-30T15:49:33.893Z] CLI Version:   11.18.0
+[debug] [2023-05-30T15:49:33.893Z] Platform:      darwin
+[debug] [2023-05-30T15:49:33.893Z] Node Version:  v16.19.0
+[debug] [2023-05-30T15:49:33.894Z] Time:          Tue May 30 2023 16:49:33 GMT+0100 (British Summer Time)
+[debug] [2023-05-30T15:49:33.894Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-05-30T15:49:33.943Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-05-30T15:49:33.944Z] > authorizing via signed-in user (samueldowse@gmail.com)
+[debug] [2023-05-30T15:49:33.944Z] [iam] checking project veganrecipes-11631 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-05-30T15:49:33.944Z] > refreshing access token with scopes: []
+[debug] [2023-05-30T15:49:33.946Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-05-30T15:49:33.946Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-05-30T15:49:34.098Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-05-30T15:49:34.098Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-05-30T15:49:34.114Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/veganrecipes-11631:testIamPermissions [none]
+[debug] [2023-05-30T15:49:34.114Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/veganrecipes-11631:testIamPermissions x-goog-quota-user=projects/veganrecipes-11631
+[debug] [2023-05-30T15:49:34.114Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/veganrecipes-11631:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-05-30T15:49:34.367Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/veganrecipes-11631:testIamPermissions 200
+[debug] [2023-05-30T15:49:34.367Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/veganrecipes-11631:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-05-30T15:49:34.368Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/veganrecipes-11631 [none]
+[debug] [2023-05-30T15:49:34.813Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/veganrecipes-11631 200
+[debug] [2023-05-30T15:49:34.813Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/veganrecipes-11631 {"projectId":"veganrecipes-11631","projectNumber":"812335520387","displayName":"VeganRecipes","name":"projects/veganrecipes-11631","resources":{"hostingSite":"veganrecipes-11631","realtimeDatabaseInstance":"veganrecipes-11631-default-rtdb","storageBucket":"veganrecipes-11631.appspot.com","locationId":"europe-west"},"state":"ACTIVE","etag":"1_5997cc95-e8d3-4c21-95bc-dd446d19ca5c"}
+[info] 
+[info] === Deploying to 'veganrecipes-11631'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2023-05-30T15:49:34.816Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/veganrecipes-11631/versions [none]
+[debug] [2023-05-30T15:49:34.816Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/veganrecipes-11631/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2023-05-30T15:49:35.882Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/veganrecipes-11631/versions 200
+[debug] [2023-05-30T15:49:35.882Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/veganrecipes-11631/versions {"name":"projects/812335520387/sites/veganrecipes-11631/versions/1e5ab6ec139f8830","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}

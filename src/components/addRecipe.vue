@@ -61,7 +61,7 @@
 
 
             <v-card elevation="12">
-              <v-card-title class="text-white" style="background-color: rgb(128,0,0)">
+              <v-card-title style="background-color: rgba(128,0,0,0.6)">
                 Setup Steps
               </v-card-title>
               <v-card-text class="pa-5">
@@ -104,7 +104,7 @@
             </v-card>
 
             <v-card elevation="12" class="mt-4">
-              <v-card-title class="text-white" style="background-color: rgb(0,128,0)">
+              <v-card-title style="background-color: rgba(0,128,0,0.6)">
                 Ingredients
               </v-card-title>
               <v-card-text class="pa-5">
@@ -158,7 +158,7 @@
 
 
             <v-card elevation="12" class="mt-4">
-              <v-card-title class="text-white" style="background-color: rgb(0,0,128)">
+              <v-card-title style="background-color: rgba(0,0,128,0.6)">
                 Cooking Steps
               </v-card-title>
               <v-card-text class="pa-5">
