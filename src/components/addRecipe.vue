@@ -21,7 +21,7 @@
                 <v-text-field
                   v-model="name"
                   label="Recipe Name"
-                  solo
+                  variant="solo-filled"
                   required
                 ></v-text-field>
               </v-col>
@@ -30,7 +30,7 @@
                 <v-text-field
                   v-model="servingSize"
                   label="Serving Size"
-                  solo
+                  variant="solo-filled"
                   required
                 ></v-text-field>
               </v-col>
@@ -40,7 +40,7 @@
                   v-model="categories"
                   :items="selectableCategories"
                   label="Categories"
-                  solo
+                  variant="solo-filled"
                   item-title="name"
                   item-value="name"
                   multiple
@@ -54,170 +54,163 @@
                   show-size
                   v-model="uploadFile"
                   truncate-length="15"
-                  solo
+                  variant="solo-filled"
                 ></v-file-input>
               </v-col>
             </v-row>
-            <v-row>
-              <v-col md="12">
-                <v-sheet style="padding: 20px;">
-                  <v-row>
-                    <v-col cols="12">
-                      <v-text-field
-                        v-model="tempSetupStep"
-                        label="Setup Step"
-                        placeholder="Preheat Oven to 200 degrees"
-                        solo
-                        required
-                      ></v-text-field>
-                    </v-col>
-                    <v-col cols="12">
-                      <v-btn
-                        width="100%"
-                        @click="addNewSetupStep()"
-                        class="warning"
-                        >Add Setup Step</v-btn
-                      >
-                    </v-col>
-                  </v-row>
-                  <v-row>
-                    <v-col md="12">
-                      <v-data-table
-                        :headers="[{ title: 'Setup Step', key: 'setupStep' },{ title: 'Actions', key: 'actions', width: '240px' },]"
-                        :items="tempSetupSteps"
-                        item-key="setupStep"
-                        class="elevation-1"
-                      >
-                        <template #[`item.actions`]="{ item }">
-                          <v-btn @click="moveUp(item.index, tempSetupSteps)" variant="text">
-                            <v-icon>mdi-chevron-up</v-icon>
-                          </v-btn>
-                          <v-btn @click="moveDown(item.index, tempSetupSteps)" variant="text">
-                            <v-icon>mdi-chevron-down</v-icon>
-                          </v-btn>
-                          <v-btn @click="deleteItem(item.index, tempSetupSteps)" variant="text">
-                            <v-icon>mdi-delete</v-icon>
-                          </v-btn>
-                        </template>
-                      </v-data-table>
-                    </v-col>
-                  </v-row>
-                </v-sheet>
-              </v-col>
-            </v-row>
-            <v-row style="margin-top: 50px;">
-              <v-col md="12">
-                <v-sheet style="padding: 20px;">
-                  <v-row>
-                    <v-col cols="6">
-                      <v-text-field
-                        v-model="tempIngredientParent"
-                        label="Ingredient Parent"
-                        placeholder="For the dumplings"
-                        solo
-                        required
-                      ></v-text-field>
-                    </v-col>
-                    <v-col cols="6">
-                      <v-text-field
-                        v-model="tempIngredient"
-                        label="Ingredient"
-                        placeholder="Plain Flour"
-                        solo
-                        required
-                      ></v-text-field>
-                    </v-col>
-                    <v-col cols="12" style="margin-top:0px;">
-                      <v-btn
-                        width="100%"
-                        @click="addNewIngredient"
-                        class="warning"
-                        >Add Ingredient</v-btn
-                      >
-                    </v-col>
-                  </v-row>
-                  <v-row>
-                    <v-col md="12">
-                      <v-data-table
-                        :headers="[
-                          { title: 'Parent', key: 'parent' },
-                          { title: 'Ingredient', key: 'ingredient' },
-                          { title: 'Actions', key: 'actions', width: '240px' },
-                        ]"
-                        show-group-by
-                        :items="tempIngredients"
-                        item-key="ingredient"
-                        class="elevation-1"
-                        :group-by="[{ key: 'parent', order: 'asc' }]"
-                      >
-                        <template #[`item.actions`]="{ item }">
-                          <v-btn @click="deleteItem(item.ingredient, tempIngredients)" variant="text">
-                            <v-icon>mdi-delete</v-icon>
-                          </v-btn>
-                        </template>
-                      </v-data-table>
-                    </v-col>
-                  </v-row>
-                </v-sheet>
-              </v-col>
-            </v-row>
-            <v-row style="margin-top: 50px;">
-              <v-col md="12">
-                <v-sheet style="padding: 20px;">
-                  <v-row>
-                    <v-col cols="12">
-                      <v-text-field
-                        v-model="tempStepName"
-                        label="Step Name"
-                        placeholder="Make the dumplings"
-                        solo
-                        required
-                      ></v-text-field>
-                    </v-col>
-                    <v-col cols="12">
-                      <v-textarea
-                        v-model="tempStepInstructions"
-                        label="Step Instructions"
-                        placeholder="Mix ingredients. Split it to equal sized balls."
-                        solo
-                        required
-                      ></v-textarea>
-                    </v-col>
-                    <v-col cols="12" style="margin-top:0px;">
-                      <v-btn width="100%" @click="addNewStep" class="warning">
-                        Add New Step
-                      </v-btn>
-                    </v-col>
-                  </v-row>
-                  <v-row>
-                    <v-col md="12">
-                      <v-data-table
-                        :headers="[
-                          { title: 'Step', key: 'step' },
-                          { title: 'Instructions', key: 'instructions' },
-                          { title: 'Actions', key: 'actions', width: '240px' },
-                        ]"
-                        :items="tempSteps"
-                        item-key="instructions"
-                        class="elevation-1"
-                      >
-                        <template #[`item.actions`]="{ item }">
-                          <v-btn @click="moveUp(item.instructions, tempSteps)" variant="text">
-                            <v-icon>mdi-chevron-up</v-icon>
-                          </v-btn>
-                          <v-btn @click="moveDown(item.instructions, tempSteps)" variant="text">
-                            <v-icon>mdi-chevron-down</v-icon>
-                          </v-btn>
-                          <v-btn @click="deleteItem(item.instructions, tempSteps)" variant="text">
-                            <v-icon>mdi-delete</v-icon>
-                          </v-btn>
-                        </template>
-                      </v-data-table>
-                    </v-col>
-                  </v-row>
-                </v-sheet>
-              </v-col>
-            </v-row>
+
+
+            <v-card elevation="12">
+              <v-card-title class="text-white" style="background-color: rgb(128,0,0)">
+                Setup Steps
+              </v-card-title>
+              <v-card-text class="pa-5">
+                <v-row>
+                  <v-col cols="12">
+                    <v-text-field
+                      v-model="tempSetupStep"
+                      label="Setup Step"
+                      placeholder="Preheat Oven to 200 degrees"
+                      required
+                      density="compact"
+                      hide-details="true"
+                      append-inner-icon="mdi-plus"
+                      @click:append-inner="addNewSetupStep"
+                    ></v-text-field>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col md="12">
+                    <v-data-table
+                      :headers="[{ title: 'Setup Step', key: 'setupStep' },{ title: 'Actions', key: 'actions', width: '240px' },]"
+                      :items="tempSetupSteps"
+                      item-key="setupStep"
+                    >
+                      <template #[`item.actions`]="{ item }">
+                        <v-btn @click="moveUp(item.index, tempSetupSteps)" variant="text">
+                          <v-icon>mdi-chevron-up</v-icon>
+                        </v-btn>
+                        <v-btn @click="moveDown(item.index, tempSetupSteps)" variant="text">
+                          <v-icon>mdi-chevron-down</v-icon>
+                        </v-btn>
+                        <v-btn @click="deleteItem(item.index, tempSetupSteps)" variant="text">
+                          <v-icon>mdi-delete</v-icon>
+                        </v-btn>
+                      </template>
+                    </v-data-table>
+                  </v-col>
+                </v-row>
+              </v-card-text>
+            </v-card>
+
+            <v-card elevation="12" class="mt-4">
+              <v-card-title class="text-white" style="background-color: rgb(0,128,0)">
+                Ingredients
+              </v-card-title>
+              <v-card-text class="pa-5">
+                <v-row>
+                  <v-col cols="6">
+                    <v-text-field
+                      v-model="tempIngredientParent"
+                      label="Ingredient Parent"
+                      placeholder="For the dumplings"
+                      hide-details="true"
+                      density="compact"
+                      required
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="6">
+                    <v-text-field
+                      v-model="tempIngredient"
+                      label="Ingredient"
+                      placeholder="Plain Flour"
+                      density="compact"
+                      hide-details="true"
+                      append-inner-icon="mdi-plus"
+                      required
+                      @click:append-inner="addNewIngredient"
+                    ></v-text-field>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col md="12">
+                    <v-data-table
+                      :headers="[
+                        { title: 'Parent', key: 'parent' },
+                        { title: 'Ingredient', key: 'ingredient' },
+                        { title: 'Actions', key: 'actions', width: '240px' },
+                      ]"
+                      show-group-by
+                      :items="tempIngredients"
+                      item-key="ingredient"
+                      :group-by="[{ key: 'parent', order: 'asc' }]"
+                    >
+                      <template #[`item.actions`]="{ item }">
+                        <v-btn @click="deleteItem(item.ingredient, tempIngredients)" variant="text">
+                          <v-icon>mdi-delete</v-icon>
+                        </v-btn>
+                      </template>
+                    </v-data-table>
+                  </v-col>
+                </v-row>
+              </v-card-text>
+            </v-card>
+
+
+            <v-card elevation="12" class="mt-4">
+              <v-card-title class="text-white" style="background-color: rgb(0,0,128)">
+                Cooking Steps
+              </v-card-title>
+              <v-card-text class="pa-5">
+                <v-row>
+                  <v-col cols="12">
+                    <v-text-field
+                      v-model="tempStepName"
+                      label="Step Name"
+                      placeholder="Make the dumplings"
+                      hide-details="true"
+                      required
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12">
+                    <v-textarea
+                      v-model="tempStepInstructions"
+                      label="Step Instructions"
+                      placeholder="Mix ingredients. Split it to equal sized balls."
+                      hide-details="true"
+                      required
+                      append-inner-icon="mdi-plus"
+                      @click:append-inner="addNewStep"
+                    ></v-textarea>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col md="12">
+                    <v-data-table
+                      :headers="[
+                        { title: 'Step', key: 'step' },
+                        { title: 'Instructions', key: 'instructions' },
+                        { title: 'Actions', key: 'actions', width: '240px' },
+                      ]"
+                      :items="tempSteps"
+                      item-key="instructions"
+                    >
+                      <template #[`item.actions`]="{ item }">
+                        <v-btn @click="moveUp(item.instructions, tempSteps)" variant="text">
+                          <v-icon>mdi-chevron-up</v-icon>
+                        </v-btn>
+                        <v-btn @click="moveDown(item.instructions, tempSteps)" variant="text">
+                          <v-icon>mdi-chevron-down</v-icon>
+                        </v-btn>
+                        <v-btn @click="deleteItem(item.instructions, tempSteps)" variant="text">
+                          <v-icon>mdi-delete</v-icon>
+                        </v-btn>
+                      </template>
+                    </v-data-table>
+                  </v-col>
+                </v-row>
+              </v-card-text>
+            </v-card>
           </form>
         </v-card-text>
         <v-card-actions>
