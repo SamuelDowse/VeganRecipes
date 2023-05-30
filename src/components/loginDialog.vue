@@ -30,6 +30,7 @@
         <v-card-actions>
           <v-btn color="grey" @click="dialog = false">Close</v-btn>
           <v-spacer></v-spacer>
+          <v-btn color="info" @click="registerUser">Register</v-btn>
           <v-btn color="success" @click="loginUser">Login</v-btn>
         </v-card-actions>
       </v-card>
@@ -38,7 +39,7 @@
 </template>
 
 <script>
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
   export default {
     data () {
       return {
@@ -57,6 +58,14 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
           this.errorMessage = error.message;
         });
       },
+      registerUser() {
+        const auth = getAuth();
+        createUserWithEmailAndPassword(auth, this.email, this.password).then(() => {
+          this.dialog = false;
+        }).catch((error) => {
+          this.errorMessage = error.message;
+        });
+      }
     }
   }
 </script>
