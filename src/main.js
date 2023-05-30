@@ -1,4 +1,4 @@
-import App from './App.vue';
+import App from '@/App.vue';
 import { createApp } from 'vue';
 import { VueFire, VueFireAuth } from 'vuefire';
 import { registerPlugins } from '@/plugins';
@@ -12,8 +12,8 @@ registerPlugins(app);
 app.use(VueFire, {
   firebaseApp,
   modules: [
-    VueFireAuth(),
-  ],
+    VueFireAuth()
+  ]
 });
 
 app.mount('#app');

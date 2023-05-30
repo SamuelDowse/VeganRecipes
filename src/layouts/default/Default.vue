@@ -6,7 +6,13 @@
   </v-app>
 </template>
 
-<script lang="ts" setup>
+<script>
   import DefaultBar from './AppBar.vue'
   import DefaultView from './View.vue'
+  export default {
+    components: {
+      DefaultBar,
+      DefaultView
+    }
+  }
 </script>

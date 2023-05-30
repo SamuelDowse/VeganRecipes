@@ -23,7 +23,7 @@
 </template>
 
 <script>
-  import { useFirestore } from 'vuefire';
+  import db from '@/firebase';
   import { useCollection } from 'vuefire';
   import { collection } from 'firebase/firestore';
 
@@ -33,7 +33,6 @@
     }),
     methods: {
       getCategories() {
-        const db = useFirestore();
         const Categories = useCollection(collection(db, 'Categories'));
         this.categories = Categories;
       }

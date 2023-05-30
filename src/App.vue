@@ -4,4 +4,7 @@
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script>
+import db from "@/firebase";
+console.log(db);
+</script>

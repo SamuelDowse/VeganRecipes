@@ -32,7 +32,7 @@
 </template>
 
 <script>
-  import { useFirestore } from 'vuefire';
+  import db from '@/firebase';
   import { useCollection } from 'vuefire';
   import { collection, query, where } from 'firebase/firestore';
 
@@ -43,7 +43,6 @@
     }),
     methods: {
       getRecipe() {
-        const db = useFirestore();
         const Recipes = collection(db, 'Recipes');
         const RecipesQuery = useCollection(query(Recipes, where("name", "==", this.$route.params.recipe)));
 
