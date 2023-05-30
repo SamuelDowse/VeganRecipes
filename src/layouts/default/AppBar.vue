@@ -1,6 +1,6 @@
 <template>
   <v-app-bar flat color="green-darken-4" density="compact">
-    <v-btn to="/" :flat="true">
+    <v-btn to="/" variant="text">
       <v-icon icon="mdi-sprout"></v-icon>
     </v-btn>
     <v-spacer></v-spacer>

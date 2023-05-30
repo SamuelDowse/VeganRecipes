@@ -22,6 +22,11 @@ const routes = [
         component: () => import(/* webpackChunkName: "home" */ '@/views/Recipe.vue'),
       },
       {
+        path: '/Search/',
+        name: 'SearchBlank',
+        component: () => import(/* webpackChunkName: "home" */ '@/views/Search.vue'),
+      },
+      {
         path: '/Search/:name',
         name: 'Search',
         component: () => import(/* webpackChunkName: "home" */ '@/views/Search.vue'),

@@ -34,24 +34,26 @@
     methods: {
       getRecipes() {
         const Recipes = useCollection(collection(db, 'Recipes'));
-
-        console.log(Recipes);
-
         this.recipes = Recipes;
       }
     },
     computed: {
       sortedRecipes() {
-        var recipes = this.recipes.filter((recipe) => { return recipe.name.toLowerCase().includes(this.testing.toLowerCase())});
-        return recipes.sort((a, b) => {
-          if (a.name < b.name ){
-            return -1;
-          }
-          if ( a.name > b.name ){
-            return 1;
-          }
-          return 0;
-        });
+        var recipes = this.recipes;
+        if (!this.testing) {
+          return recipes.sort((a, b) => {
+            if (a.name < b.name ) return -1;
+            if ( a.name > b.name ) return 1;
+            return 0;
+          });
+        } else {
+          recipes = recipes.filter((recipe) => { return recipe.name.toLowerCase().includes(this.testing.toLowerCase())});
+          return recipes.sort((a, b) => {
+            if (a.name < b.name ) return -1;
+            if ( a.name > b.name ) return 1;
+            return 0;
+          });
+        }
       },
       testing() {
         return this.$route.params.name;
