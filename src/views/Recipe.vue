@@ -5,7 +5,7 @@
         :src="`https://firebasestorage.googleapis.com/v0/b/veganrecipes-11631.appspot.com/o/meals%2F${this.$route.params.recipe}.jpg?alt=media`"
         style="border-radius: 10px;"
       ></v-img>
-      <v-card v-for="item in recipe?.ingredientsOrder" :key="item" flat="true" class="mt-3">
+      <v-card v-for="item in recipe?.ingredientsOrder" :key="item" class="mt-3">
         <v-card-title>
           {{ item }}
         </v-card-title>
@@ -21,7 +21,7 @@
       <h2 v-html="recipe?.setup?.join(' &#183; ')"></h2>
       <b><i>Serving Size: {{ recipe?.servingSize }}</i></b><br/><br/>
 
-      <v-card v-for="item in recipe?.stepsOrder" :key="item" flat="true">
+      <v-card v-for="item in recipe?.stepsOrder" :key="item" class="mb-1">
         <v-card-title>
           <v-checkbox v-model="selected" hide-details="true" :label="item" :value="item"></v-checkbox>
         </v-card-title>

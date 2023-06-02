@@ -310,3 +310,121 @@
     at processTimers (node:internal/timers:502:7)
 [error] 
 [error] Error: An unexpected error has occurred.
+[debug] [2023-05-30T16:03:57.223Z] ----------------------------------------------------------------------
+[debug] [2023-05-30T16:03:57.224Z] Command:       /Users/dowses/.nvm/versions/node/v16.19.0/bin/node /Users/dowses/.nvm/versions/node/v16.19.0/bin/firebase deploy
+[debug] [2023-05-30T16:03:57.225Z] CLI Version:   11.18.0
+[debug] [2023-05-30T16:03:57.225Z] Platform:      darwin
+[debug] [2023-05-30T16:03:57.225Z] Node Version:  v16.19.0
+[debug] [2023-05-30T16:03:57.226Z] Time:          Tue May 30 2023 17:03:57 GMT+0100 (British Summer Time)
+[debug] [2023-05-30T16:03:57.226Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-05-30T16:03:57.258Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-05-30T16:03:57.259Z] > authorizing via signed-in user (samueldowse@gmail.com)
+[debug] [2023-05-30T16:03:57.259Z] [iam] checking project veganrecipes-11631 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-05-30T16:03:57.260Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/veganrecipes-11631:testIamPermissions [none]
+[debug] [2023-05-30T16:03:57.261Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/veganrecipes-11631:testIamPermissions x-goog-quota-user=projects/veganrecipes-11631
+[debug] [2023-05-30T16:03:57.261Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/veganrecipes-11631:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-05-30T16:03:57.531Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/veganrecipes-11631:testIamPermissions 200
+[debug] [2023-05-30T16:03:57.531Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/veganrecipes-11631:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-05-30T16:03:57.532Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/veganrecipes-11631 [none]
+[debug] [2023-05-30T16:03:57.951Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/veganrecipes-11631 200
+[debug] [2023-05-30T16:03:57.951Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/veganrecipes-11631 {"projectId":"veganrecipes-11631","projectNumber":"812335520387","displayName":"VeganRecipes","name":"projects/veganrecipes-11631","resources":{"hostingSite":"veganrecipes-11631","realtimeDatabaseInstance":"veganrecipes-11631-default-rtdb","storageBucket":"veganrecipes-11631.appspot.com","locationId":"europe-west"},"state":"ACTIVE","etag":"1_06908e7e-5bc7-4e77-9806-61f6cf087f37"}
+[info] 
+[info] === Deploying to 'veganrecipes-11631'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2023-05-30T16:03:57.954Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/veganrecipes-11631/versions [none]
+[debug] [2023-05-30T16:03:57.954Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/veganrecipes-11631/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2023-05-30T16:03:59.078Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/veganrecipes-11631/versions 200
+[debug] [2023-05-30T16:03:59.079Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/veganrecipes-11631/versions {"name":"projects/812335520387/sites/veganrecipes-11631/versions/b3619e4503e970cf","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[veganrecipes-11631]: beginning deploy... 
+[info] i  hosting[veganrecipes-11631]: found 18 files in dist 
+[debug] [2023-05-30T16:05:12.986Z] [hosting] uploading with 200 concurrency
+[debug] [2023-05-30T16:05:13.079Z] [hosting] hash cache [ZGlzdA] stored for 18 files
+[debug] [2023-05-30T16:05:13.079Z] [hosting][hash queue][FINAL] {"max":85,"min":11,"avg":28.944444444444443,"active":0,"complete":18,"success":18,"errored":0,"retried":0,"total":18,"elapsed":89}
+[debug] [2023-05-30T16:05:13.079Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/812335520387/sites/veganrecipes-11631/versions/b3619e4503e970cf:populateFiles [none]
+[debug] [2023-05-30T16:05:13.079Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/812335520387/sites/veganrecipes-11631/versions/b3619e4503e970cf:populateFiles {"files":{"/assets/Category-8f57dcad.js":"382bc0392cec7805f71bfe1d3d0018f91ae2e3e922f7007ba397f12e1949b07f","/index.html":"9679c6ef1c38ba8f5e87e769d97d8571c5aca5a040e00496fcb34f8e13c105f0","/assets/Home-78c11a40.js":"3123ab547651583767e9fbf1d6691605e777d480888d9bc480f1072ff5869ff9","/assets/Recipe-1ea139e1.css":"5810c930dad76fc4d1b5542d24e16f9f9a9b49ef3627c3cd51c56caa4608d4eb","/assets/Recipe-fda7d427.js":"2483031dd4fa9b44873c11c0ef5a98e19d260cf5980670c249e1999822759c49","/assets/Default-ea2c05bc.css":"9b0a2e8934cf9bb903492357d9f2502b769adc7506017cd7894c4f541b72bd69","/assets/Search-133a3bf1.js":"64584eb6c50f2c29352e888579357f777cb73bdd8b86aafb4c7fbc6ed23d16d5","/assets/VRow-b3701060.js":"6794e45796aacc773aa59a6f13698f2519bfb7b9096506c3d27458072408a22c","/assets/Default-80d929ce.js":"674545003b797cb2510cb274d4afba41917f1a172f2d5f5427cd37bc415df691","/assets/VRow-709cfe46.css":"83fa99cccf6311cd9c8f983db90526facc654930e5f731927f8f70626b92680e","/favicon.ico":"f80a1121f7a0f402dfd160e7233c81014d6f45dd6cca2c472ca45d9593186fb0","/assets/webfontloader-523643f5.js":"8e981b3b2ecdbe2fb50d56b00a6cb6fb501356c5a70a74f8bef1dc9089acc6e8","/assets/materialdesignicons-webfont-c1c004a9.woff2":"63762e82c2df6362005976fe352fb3f6c87f701903efdafc2d0ab574b68b03d5","/assets/materialdesignicons-webfont-80bb28b3.woff":"5f8c7836078e8288d7c3047ff4943334df310e9c1f81ecd6f97b5e8cb1d5860a","/assets/index-db2a8606.js":"58390dd1c0654d74fef83ee80713e1cfb8f1bd5c046051ca026098d6c66236a4","/assets/index-4df03237.css":"c03da9d9a95e8bac891c62684fd7fd84efcdc80dd2cef973eb093c3f5aa590e7","/assets/materialdesignicons-webfont-a58ecb54.ttf":"3da7757ee5c36bbb6ce822d9245efd046368bb2377feb03fdf70bdee0d12f739","/assets/materialdesignicons-webfont-67d24abe.eot":"01a7e415ff600d0315687e33793e49ad20a273b78216b6eb02a785ec5fa4b12b"}}
+[debug] [2023-05-30T16:05:13.920Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/812335520387/sites/veganrecipes-11631/versions/b3619e4503e970cf:populateFiles 200
+[debug] [2023-05-30T16:05:13.921Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/812335520387/sites/veganrecipes-11631/versions/b3619e4503e970cf:populateFiles {"uploadRequiredHashes":["2483031dd4fa9b44873c11c0ef5a98e19d260cf5980670c249e1999822759c49","58390dd1c0654d74fef83ee80713e1cfb8f1bd5c046051ca026098d6c66236a4","64584eb6c50f2c29352e888579357f777cb73bdd8b86aafb4c7fbc6ed23d16d5","382bc0392cec7805f71bfe1d3d0018f91ae2e3e922f7007ba397f12e1949b07f","3123ab547651583767e9fbf1d6691605e777d480888d9bc480f1072ff5869ff9","6794e45796aacc773aa59a6f13698f2519bfb7b9096506c3d27458072408a22c","674545003b797cb2510cb274d4afba41917f1a172f2d5f5427cd37bc415df691","9679c6ef1c38ba8f5e87e769d97d8571c5aca5a040e00496fcb34f8e13c105f0"],"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files"}
+[debug] [2023-05-30T16:05:13.925Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/2483031dd4fa9b44873c11c0ef5a98e19d260cf5980670c249e1999822759c49 [none]
+[debug] [2023-05-30T16:05:13.925Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/2483031dd4fa9b44873c11c0ef5a98e19d260cf5980670c249e1999822759c49 [stream]
+[debug] [2023-05-30T16:05:13.929Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/58390dd1c0654d74fef83ee80713e1cfb8f1bd5c046051ca026098d6c66236a4 [none]
+[debug] [2023-05-30T16:05:13.929Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/58390dd1c0654d74fef83ee80713e1cfb8f1bd5c046051ca026098d6c66236a4 [stream]
+[debug] [2023-05-30T16:05:13.930Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/64584eb6c50f2c29352e888579357f777cb73bdd8b86aafb4c7fbc6ed23d16d5 [none]
+[debug] [2023-05-30T16:05:13.930Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/64584eb6c50f2c29352e888579357f777cb73bdd8b86aafb4c7fbc6ed23d16d5 [stream]
+[debug] [2023-05-30T16:05:13.931Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/382bc0392cec7805f71bfe1d3d0018f91ae2e3e922f7007ba397f12e1949b07f [none]
+[debug] [2023-05-30T16:05:13.932Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/382bc0392cec7805f71bfe1d3d0018f91ae2e3e922f7007ba397f12e1949b07f [stream]
+[debug] [2023-05-30T16:05:13.933Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/3123ab547651583767e9fbf1d6691605e777d480888d9bc480f1072ff5869ff9 [none]
+[debug] [2023-05-30T16:05:13.933Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/3123ab547651583767e9fbf1d6691605e777d480888d9bc480f1072ff5869ff9 [stream]
+[debug] [2023-05-30T16:05:13.934Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/6794e45796aacc773aa59a6f13698f2519bfb7b9096506c3d27458072408a22c [none]
+[debug] [2023-05-30T16:05:13.935Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/6794e45796aacc773aa59a6f13698f2519bfb7b9096506c3d27458072408a22c [stream]
+[debug] [2023-05-30T16:05:13.936Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/674545003b797cb2510cb274d4afba41917f1a172f2d5f5427cd37bc415df691 [none]
+[debug] [2023-05-30T16:05:13.936Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/674545003b797cb2510cb274d4afba41917f1a172f2d5f5427cd37bc415df691 [stream]
+[debug] [2023-05-30T16:05:13.936Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/9679c6ef1c38ba8f5e87e769d97d8571c5aca5a040e00496fcb34f8e13c105f0 [none]
+[debug] [2023-05-30T16:05:13.936Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/9679c6ef1c38ba8f5e87e769d97d8571c5aca5a040e00496fcb34f8e13c105f0 [stream]
+[debug] [2023-05-30T16:05:13.938Z] [hosting][populate queue][FINAL] {"max":846,"min":846,"avg":846,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":860}
+[debug] [2023-05-30T16:05:13.938Z] [hosting] uploads queued: 8
+[debug] [2023-05-30T16:05:14.961Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/3123ab547651583767e9fbf1d6691605e777d480888d9bc480f1072ff5869ff9 200
+[debug] [2023-05-30T16:05:14.962Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/3123ab547651583767e9fbf1d6691605e777d480888d9bc480f1072ff5869ff9 [stream]
+[debug] [2023-05-30T16:05:14.965Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/674545003b797cb2510cb274d4afba41917f1a172f2d5f5427cd37bc415df691 200
+[debug] [2023-05-30T16:05:14.965Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/674545003b797cb2510cb274d4afba41917f1a172f2d5f5427cd37bc415df691 [stream]
+[debug] [2023-05-30T16:05:14.968Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/382bc0392cec7805f71bfe1d3d0018f91ae2e3e922f7007ba397f12e1949b07f 200
+[debug] [2023-05-30T16:05:14.968Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/382bc0392cec7805f71bfe1d3d0018f91ae2e3e922f7007ba397f12e1949b07f [stream]
+[debug] [2023-05-30T16:05:14.972Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/9679c6ef1c38ba8f5e87e769d97d8571c5aca5a040e00496fcb34f8e13c105f0 200
+[debug] [2023-05-30T16:05:14.972Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/9679c6ef1c38ba8f5e87e769d97d8571c5aca5a040e00496fcb34f8e13c105f0 [stream]
+[debug] [2023-05-30T16:05:14.974Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/2483031dd4fa9b44873c11c0ef5a98e19d260cf5980670c249e1999822759c49 200
+[debug] [2023-05-30T16:05:14.974Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/2483031dd4fa9b44873c11c0ef5a98e19d260cf5980670c249e1999822759c49 [stream]
+[debug] [2023-05-30T16:05:14.975Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/6794e45796aacc773aa59a6f13698f2519bfb7b9096506c3d27458072408a22c 200
+[debug] [2023-05-30T16:05:14.975Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/6794e45796aacc773aa59a6f13698f2519bfb7b9096506c3d27458072408a22c [stream]
+[debug] [2023-05-30T16:05:14.992Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/58390dd1c0654d74fef83ee80713e1cfb8f1bd5c046051ca026098d6c66236a4 200
+[debug] [2023-05-30T16:05:14.993Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/58390dd1c0654d74fef83ee80713e1cfb8f1bd5c046051ca026098d6c66236a4 [stream]
+[debug] [2023-05-30T16:05:15.154Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/64584eb6c50f2c29352e888579357f777cb73bdd8b86aafb4c7fbc6ed23d16d5 200
+[debug] [2023-05-30T16:05:15.155Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/veganrecipes-11631/versions/b3619e4503e970cf/files/64584eb6c50f2c29352e888579357f777cb73bdd8b86aafb4c7fbc6ed23d16d5 [stream]
+[debug] [2023-05-30T16:05:15.156Z] [hosting][upload queue][FINAL] {"max":1233,"min":1040,"avg":1073.125,"active":0,"complete":8,"success":8,"errored":0,"retried":0,"total":8,"elapsed":1235}
+[info] ✔  hosting[veganrecipes-11631]: file upload complete 
+[debug] [2023-05-30T16:05:15.159Z] [hosting] deploy completed after 2191ms
+[debug] [2023-05-30T16:05:15.165Z] [
+  {
+    "config": {
+      "public": "dist",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "veganrecipes-11631"
+    },
+    "version": "projects/812335520387/sites/veganrecipes-11631/versions/b3619e4503e970cf"
+  }
+]
+[info] i  hosting[veganrecipes-11631]: finalizing version... 
+[debug] [2023-05-30T16:05:15.170Z] >>> [apiv2][query] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/veganrecipes-11631/versions/b3619e4503e970cf updateMask=status%2Cconfig
+[debug] [2023-05-30T16:05:15.170Z] >>> [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/veganrecipes-11631/versions/b3619e4503e970cf {"status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]}}
+[debug] [2023-05-30T16:05:15.576Z] <<< [apiv2][status] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/veganrecipes-11631/versions/b3619e4503e970cf 200
+[debug] [2023-05-30T16:05:15.576Z] <<< [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/veganrecipes-11631/versions/b3619e4503e970cf {"name":"projects/812335520387/sites/veganrecipes-11631/versions/b3619e4503e970cf","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2023-05-30T16:03:58.636860Z","createUser":{"email":"SamuelDowse@gmail.com"},"finalizeTime":"2023-05-30T16:05:15.469027Z","finalizeUser":{"email":"SamuelDowse@gmail.com"}}
+[debug] [2023-05-30T16:05:15.577Z] [hosting] finalized version for veganrecipes-11631:[object Object]
+[info] ✔  hosting[veganrecipes-11631]: version finalized 
+[info] i  hosting[veganrecipes-11631]: releasing new version... 
+[debug] [2023-05-30T16:05:15.578Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/veganrecipes-11631/channels/live/releases versionName=projects%2F812335520387%2Fsites%2Fveganrecipes-11631%2Fversions%2Fb3619e4503e970cf
+[debug] [2023-05-30T16:05:15.578Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/veganrecipes-11631/channels/live/releases {}
+[debug] [2023-05-30T16:05:16.498Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/veganrecipes-11631/channels/live/releases 200
+[debug] [2023-05-30T16:05:16.499Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/veganrecipes-11631/channels/live/releases {"name":"projects/812335520387/sites/veganrecipes-11631/channels/live/releases/1685462715747000","version":{"name":"projects/812335520387/sites/veganrecipes-11631/versions/b3619e4503e970cf","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2023-05-30T16:03:58.636860Z","createUser":{"email":"SamuelDowse@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/AAcHTtc1lwvf1RAk6wIlMMr1Rp79aDC4lOqdlP5U_dz_lA"},"finalizeTime":"2023-05-30T16:05:15.469027Z","finalizeUser":{"email":"SamuelDowse@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/AAcHTtc1lwvf1RAk6wIlMMr1Rp79aDC4lOqdlP5U_dz_lA"}},"type":"DEPLOY","releaseTime":"2023-05-30T16:05:15.747Z","releaseUser":{"email":"SamuelDowse@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/AAcHTtc1lwvf1RAk6wIlMMr1Rp79aDC4lOqdlP5U_dz_lA"}}
+[debug] [2023-05-30T16:05:16.499Z] [hosting] release: {"name":"projects/812335520387/sites/veganrecipes-11631/channels/live/releases/1685462715747000","version":{"name":"projects/812335520387/sites/veganrecipes-11631/versions/b3619e4503e970cf","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2023-05-30T16:03:58.636860Z","createUser":{"email":"SamuelDowse@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/AAcHTtc1lwvf1RAk6wIlMMr1Rp79aDC4lOqdlP5U_dz_lA"},"finalizeTime":"2023-05-30T16:05:15.469027Z","finalizeUser":{"email":"SamuelDowse@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/AAcHTtc1lwvf1RAk6wIlMMr1Rp79aDC4lOqdlP5U_dz_lA"}},"type":"DEPLOY","releaseTime":"2023-05-30T16:05:15.747Z","releaseUser":{"email":"SamuelDowse@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/AAcHTtc1lwvf1RAk6wIlMMr1Rp79aDC4lOqdlP5U_dz_lA"}}
+[info] ✔  hosting[veganrecipes-11631]: release complete 
+[info] 
+[info] ✔  Deploy complete! 
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/veganrecipes-11631/overview
+[info] Hosting URL: https://veganrecipes-11631.web.app
+[debug] [2023-05-30T16:06:41.552Z] Error: Timed out.
+    at Timeout._onTimeout (/Users/dowses/.nvm/versions/node/v16.19.0/lib/node_modules/firebase-tools/lib/utils.js:253:49)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+[error] 
+[error] Error: An unexpected error has occurred.

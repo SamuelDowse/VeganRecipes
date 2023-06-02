@@ -11,9 +11,24 @@
       </template>
 
       <v-card>
-        <v-card-title class="text-center text-white" style="background-color: green">
-          Add Recipe
-        </v-card-title>
+        <v-toolbar
+          dark
+          style="background-color: green"
+          class="text-white"
+        >
+          <v-btn
+            icon
+            dark
+            @click="dialog = false"
+          >
+            <v-icon>mdi-close</v-icon>
+          </v-btn>
+          <v-toolbar-title>Add Recipe</v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-toolbar-items>
+            <v-btn :disabled="disabled" @click="addNewRecipe">Add Recipe</v-btn>
+          </v-toolbar-items>
+        </v-toolbar>
         <v-card-text>
           <form>
             <v-row>
@@ -213,11 +228,6 @@
             </v-card>
           </form>
         </v-card-text>
-        <v-card-actions>
-          <v-btn color="grey" @click="dialog = false">Close</v-btn>
-          <v-spacer></v-spacer>
-          <v-btn color="success" :disabled="disabled" @click="addNewRecipe">Add Recipe</v-btn>
-        </v-card-actions>
       </v-card>
     </v-dialog>
   </div>
